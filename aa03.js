@@ -30,7 +30,7 @@ async.eachSeries(addresses, function(value, callback) {
 
     // construct a querystring from the `query` object's values and append it to the api URL
    
-   const addressCoordinates = {
+   let addressCoordinates = {
        address: "",
        latLong: []
    }
@@ -47,6 +47,7 @@ async.eachSeries(addresses, function(value, callback) {
             axios.get(apiRequest)
                 .then(function(response) {
                     // handle success
+                    
                     addressCoordinates.address = value 
                     addressCoordinates.latLong.lat = OutputGeocodes[0].OutputGeocode.Latitude
                     addressCoordinates.latLong.long = OutputGeocodes[0].OutputGeocode.Longitude
